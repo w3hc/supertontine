@@ -45,8 +45,12 @@ describe("Super Tontine", function () {
       const USD = await ethers.getContractFactory("USD")
       const usd = await USD.deploy(initialBalance)
 
+      // TODO: deploy DAO + NFT
 
-
+      // TODO: deploy TontineLogic
+      // uint256 _roundDuration, uint256 _monthlyContribAmount, ISuperToken _acceptedToken, ISuperfluid _host, address _owner, address _membershipNFTAddress
+      const TontineLogic = await ethers.getContractFactory("TontineLogic")
+      const tontine = await TontineLogic.deploy()
 
       return { usd, alice, bob, initialBalance }
     }
