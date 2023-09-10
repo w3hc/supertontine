@@ -10,10 +10,14 @@ async function main() {
   console.log("First members:", tontine.firstMembers)
   console.log("Amount:", tontine.monthlyContribAmount)
 
-  // deploy
+  // deploy usd
   const initialMint = ethers.parseEther("10000")
   const USD = await ethers.getContractFactory("USD")
   const usd = await USD.deploy(initialMint)
+
+  // uint256 _roundDuration, uint256 _monthlyContribAmount, ISuperToken _acceptedToken, ISuperfluid _host, address _owner, address _membershipNFTAddress
+  const TontineLogic = await ethers.getContractFactory("TontineLogic")
+  const tontineLogic = await TontineLogic.deploy()
 
   const recordAddress = {
     "contractAddress": await usd.getAddress()

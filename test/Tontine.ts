@@ -40,9 +40,14 @@ describe("Super Tontine", function () {
 
     async function deployContracts() {
       const [alice, bob] = await ethers.getSigners();
+
       const initialBalance = ethers.parseEther('10000')
       const USD = await ethers.getContractFactory("USD")
       const usd = await USD.deploy(initialBalance)
+
+
+
+
       return { usd, alice, bob, initialBalance }
     }
 
