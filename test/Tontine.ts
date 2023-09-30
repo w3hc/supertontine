@@ -71,7 +71,7 @@ describe("Super Tontine", function () {
       });
     })
   })
-  describe("Eskrow", function () {
+  describe("Escrow", function () {
 
     async function deployContracts() {
       const [alice, bob] = await ethers.getSigners();
@@ -82,7 +82,7 @@ describe("Super Tontine", function () {
     }
 
     describe("Deployment", function () {
-      xit("Should return the address of the eskrow funder", async function () {
+      xit("Should return the address of the escrow funder", async function () {
       })
       xit("Should return the address of the beneficiary", async function () {
       })
