@@ -1,0 +1,22 @@
+{
+  "0 debug pnpm:scope": {
+    "selected": 1
+  },
+  "1 error pnpm": {
+    "code": "ELIFECYCLE",
+    "errno": "ENOENT",
+    "syscall": "spawn",
+    "file": "sh",
+    "pkgid": "w3hc-hardhat-template@0.1.0",
+    "stage": "test",
+    "script": "hardhat test",
+    "pkgname": "w3hc-hardhat-template",
+    "err": {
+      "name": "pnpm",
+      "message": "w3hc-hardhat-template@0.1.0 test: `hardhat test`\nspawn ENOENT",
+      "code": "ELIFECYCLE",
+      "stack": "pnpm: w3hc-hardhat-template@0.1.0 test: `hardhat test`\nspawn ENOENT\n    at ChildProcess.<anonymous> (/snapshot/dist/pnpm.cjs)\n    at ChildProcess.emit (events.js:376:20)\n    at maybeClose (internal/child_process.js:1055:16)\n    at Process.ChildProcess._handle.onexit (internal/child_process.js:288:5)"
+    }
+  },
+  "2 warn pnpm:global": " Local package.json exists, but node_modules missing, did you mean to install?"
+}
