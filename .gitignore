@@ -9,3 +9,5 @@ artifacts
 
 .env*
 !.env.template
+
+.DS_Store
