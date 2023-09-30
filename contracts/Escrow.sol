@@ -9,7 +9,7 @@ pragma solidity ^0.8.0;
  *  - Si il n'y a pas de défaut, le garant est le seul à pouvoir récupérer ses sous du contrat.
  *
  */
-contract Eskrow {
+contract Escrow {
     constructor() {}
 
     receive() external payable {
