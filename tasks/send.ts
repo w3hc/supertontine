@@ -7,9 +7,9 @@ task("send", "Send a given amount of tokens to a given address")
 
     async (args) => {
         const [signer] = await ethers.getSigners()
-        const Basic = await ethers.getContractFactory('Basic')
-        const addr = store.contractAddress
-        const erc20 = new ethers.Contract(addr, Basic.interface, signer)
+        const USD = await ethers.getContractFactory('USD')
+        const addr = store.USDContractAddress
+        const erc20 = new ethers.Contract(addr, USD.interface, signer)
         const mint = await erc20.transfer(args.wallet, await ethers.parseEther(args.amount))
         const hash = mint.hash
         console.log("\nSent", msg(args.amount), "to", args.wallet , "\n\nTx hash:", msg(hash))
