@@ -33,13 +33,13 @@ pnpm tontine
 Mint USD:
 
 ```
-pnpm mint --amount 42 --wallet <YOUR_WALLET_ADDRESS> 
+pnpm mint 42
 ```
 
 Send:
 
 ```
-pnpm send --amount 8 --wallet <YOUR_WALLET_ADDRESS> 
+pnpm send 8
 ```
 
 ## Versions
@@ -48,6 +48,7 @@ pnpm send --amount 8 --wallet <YOUR_WALLET_ADDRESS>
 - Hardhat [v2.17.2](https://github.com/NomicFoundation/hardhat/releases/tag/hardhat%402.17.2)
 - OpenZeppelin Contracts [v4.9.3](https://github.com/OpenZeppelin/openzeppelin-contracts/releases/tag/v4.9.3)
 - Ethers [v6](https://docs.ethers.org/v6/)
+- PNPM [v8.8.0](https://pnpm.io/pnpm-vs-npm)
 
 ## Support
 
