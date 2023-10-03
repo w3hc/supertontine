@@ -1,12 +1,19 @@
 import { loadFixture } from '@nomicfoundation/hardhat-toolbox/network-helpers'
 import { expect } from 'chai'
-import { ethers } from 'hardhat'
+const { Framework } = require("@superfluid-finance/sdk-core")
+const { ethers } = require("hardhat")
+import { deployTestFramework } from "@superfluid-finance/ethereum-contracts/dev-scripts/deploy-test-framework"
+const TestToken = require("@superfluid-finance/ethereum-contracts/build/contracts/TestToken.json")
 
 describe("Super Tontine", function () {
   
     async function deployContracts() {
 
       let [alice, bob, francis] = await ethers.getSigners()
+
+      const accounts = await ethers.getSigners()
+      const provider = alice
+      // const sfDeployer = await deployTestFramework()
 
       const initialBalance = ethers.parseEther('10000')
       const USD = await ethers.getContractFactory("USD")
@@ -40,16 +47,22 @@ describe("Super Tontine", function () {
       await nft.connect(alice).delegate(alice.address)
       await nft.connect(bob).delegate(bob.address)
 
-      // TODO: deploy TontineLogic
-      // uint256 _roundDuration, uint256 _monthlyContribAmount, ISuperToken _acceptedToken, ISuperfluid _host, address _owner, address _membershipNFTAddress
-      // const TontineLogic = await ethers.getContractFactory("TontineLogic")
-      // const tontine = await TontineLogic.deploy()
+      const roundDuration = 60 * 60 * 24 * 30 // 30 days
+      const monthlyContribAmount = 200
+      const acceptedToken = await usd.getAddress()
+      const host = alice.address
+      const owner = alice.address
+      const membershipNFTAddress = await nft.getAddress()
+
+      // check https://github.com/superfluid-finance/super-examples/blob/main/projects/tradeable-cashflow/test/TradeableCashflow.test.js
+      const TontineLogic = await ethers.getContractFactory("TontineLogic")
+      // const tontine = await TontineLogic.deploy(roundDuration, monthlyContribAmount, acceptedToken, host, owner, membershipNFTAddress) // uint256 _roundDuration, uint256 _monthlyContribAmount, ISuperToken _acceptedToken, ISuperfluid _host, address _owner, address _membershipNFTAddress
 
       return { usd, alice, bob, initialBalance, nft, uri, gov, manifesto}
     }
 
     describe("Deployment", function () {
-      it("Should return a balance of 10,000 units", async function () {
+      it.only("Should return a balance of 10,000 units", async function () {
         const { usd, initialBalance, alice } = await loadFixture(deployContracts);
         expect(await usd.balanceOf(alice.address)).to.equal(initialBalance)
       })

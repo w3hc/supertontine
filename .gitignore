@@ -6,7 +6,6 @@ typechain-types
 
 cache
 artifacts
-store.json
 
 .env*
 !.env.template
