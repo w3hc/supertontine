@@ -2,7 +2,7 @@ import { loadFixture } from '@nomicfoundation/hardhat-toolbox/network-helpers'
 import { expect } from 'chai'
 const { Framework } = require("@superfluid-finance/sdk-core")
 const { ethers } = require("hardhat")
-const { deployTestFramework } = require("@superfluid-finance/ethereum-contracts/dev-scripts/deploy-test-framework");
+import { deployTestFramework } from "@superfluid-finance/ethereum-contracts/dev-scripts/deploy-test-framework"
 const TestToken = require("@superfluid-finance/ethereum-contracts/build/contracts/TestToken.json")
 
 describe("Super Tontine", function () {
@@ -10,6 +10,10 @@ describe("Super Tontine", function () {
     async function deployContracts() {
 
       let [alice, bob, francis] = await ethers.getSigners()
+
+      const accounts = await ethers.getSigners()
+      const provider = alice
+      // const sfDeployer = await deployTestFramework()
 
       const initialBalance = ethers.parseEther('10000')
       const USD = await ethers.getContractFactory("USD")
