@@ -7,9 +7,9 @@ task("mint", "Mint a given amount of ERC-20 tokens")
 
     async (amount) => {
         const [signer] = await ethers.getSigners()
-        const Basic = await ethers.getContractFactory('Basic')
-        const addr = store.contractAddress
-        const erc20 = new ethers.Contract(addr, Basic.interface, signer)
+        const USD = await ethers.getContractFactory('USD')
+        const addr = store.USDContractAddress
+        const erc20 = new ethers.Contract(addr, USD.interface, signer)
         const mint = await erc20.mint(await ethers.parseEther(amount.amount))
         const hash = mint.hash
         console.log("Minted", msg(amount.amount), "units. \n\nTx hash:", msg(hash))

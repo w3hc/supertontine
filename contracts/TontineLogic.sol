@@ -26,7 +26,7 @@ contract TontineLogic is RedirectAll {
         ISuperfluid _host,
         address _owner,
         address _membershipNFTAddress
-    ) RedirectAll(_acceptedToken, host, _owner) {
+    ) RedirectAll(_acceptedToken, _host, _owner) {
         roundDuration = _roundDuration;
         monthlyContribAmount = _monthlyContribAmount;
         currentPeriod = block.timestamp;

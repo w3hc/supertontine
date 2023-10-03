@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "hardhat test",
-    "tontine": "hardhat run scripts/deploy.ts --network goerli",
+    "deploy:goerli": "hardhat run scripts/deploy.ts --network goerli",
     "mint": "hardhat mint --network goerli --amount",
-    "send": "hardhat send --network goerli"
+    "send": "hardhat send --network goerli --wallet 0xD8a394e7d7894bDF2C57139fF17e5CBAa29Dd977 --amount"
   },
   "keywords": [],
   "author": "",
