@@ -37,6 +37,9 @@
     "cli-color": "^2.0.3",
     "dotenv": "^16.3.1",
     "ethers": "^6.7.1",
-    "hardhat-deploy": "^0.11.37"
+    "hardhat-deploy": "^0.11.37",
+    "@superfluid-finance/ethereum-contracts": "1.7.1",
+    "@superfluid-finance/metadata": "github:superfluid-finance/metadata",
+    "@superfluid-finance/sdk-core": "^0.4.4"
   }
 }

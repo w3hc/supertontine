@@ -2,18 +2,25 @@ const color = require("cli-color")
 var msg = color.xterm(39).bgXterm(128)
 import hre, { ethers, network } from 'hardhat'
 import fs from 'fs'
-import * as tontine from '../tontine.config'
+import * as tontineConfig from '../tontine.config'
 
 async function main() {
 
-  console.log("Duration:", tontine.roundDuration)
-  console.log("First members:", tontine.firstMembers)
-  console.log("Amount:", tontine.monthlyContribAmount)
+  console.log("Duration:", tontineConfig.roundDuration)
+  console.log("First members:", tontineConfig.firstMembers)
+  console.log("Amount:", tontineConfig.monthlyContribAmount)
 
-  // deploy
+  // deploy usd
   const initialMint = ethers.parseEther("10000")
   const USD = await ethers.getContractFactory("USD")
   const usd = await USD.deploy(initialMint)
+
+  // TODO: deploy DAO + NFT
+
+  // TODO: deploy TontineLogic
+  // uint256 _roundDuration, uint256 _monthlyContribAmount, ISuperToken _acceptedToken, ISuperfluid _host, address _owner, address _membershipNFTAddress
+  const TontineLogic = await ethers.getContractFactory("TontineLogic")
+  const tontine = await TontineLogic.deploy()
 
   const recordAddress = {
     "contractAddress": await usd.getAddress()

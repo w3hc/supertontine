@@ -40,9 +40,18 @@ describe("Super Tontine", function () {
 
     async function deployContracts() {
       const [alice, bob] = await ethers.getSigners();
+
       const initialBalance = ethers.parseEther('10000')
       const USD = await ethers.getContractFactory("USD")
       const usd = await USD.deploy(initialBalance)
+
+      // TODO: deploy DAO + NFT
+
+      // TODO: deploy TontineLogic
+      // uint256 _roundDuration, uint256 _monthlyContribAmount, ISuperToken _acceptedToken, ISuperfluid _host, address _owner, address _membershipNFTAddress
+      const TontineLogic = await ethers.getContractFactory("TontineLogic")
+      const tontine = await TontineLogic.deploy()
+
       return { usd, alice, bob, initialBalance }
     }
 
@@ -62,7 +71,7 @@ describe("Super Tontine", function () {
       });
     })
   })
-  describe("Eskrow", function () {
+  describe("Escrow", function () {
 
     async function deployContracts() {
       const [alice, bob] = await ethers.getSigners();
@@ -73,7 +82,7 @@ describe("Super Tontine", function () {
     }
 
     describe("Deployment", function () {
-      xit("Should return the address of the eskrow funder", async function () {
+      xit("Should return the address of the escrow funder", async function () {
       })
       xit("Should return the address of the beneficiary", async function () {
       })
